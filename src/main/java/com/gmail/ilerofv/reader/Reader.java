@@ -1,8 +1,6 @@
 package com.gmail.ilerofv.reader;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import org.apache.commons.io.IOUtils;
-import sun.nio.ch.IOUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
