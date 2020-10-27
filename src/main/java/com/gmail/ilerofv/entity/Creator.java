@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Creator {
-    public static Transaction create(String[] params){
+    public static Transaction createTransaction(String[] params){
         Creator creator = new Creator();
         return new Transaction.Builder()
                 .withId(params[0].trim())
