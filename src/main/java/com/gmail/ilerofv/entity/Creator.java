@@ -6,10 +6,9 @@ import java.util.Date;
 
 public class Creator {
     public static Transaction createTransaction(String[] params){
-        Creator creator = new Creator();
         return new Transaction.Builder()
                 .withId(params[0].trim())
-                .withDate(creator.stringToDate(params[1].trim()))
+                .withDate(stringToDate(params[1].trim()))
                 .withAmount(Double.parseDouble(params[2].trim()))
                 .withMerchant(params[3].trim())
                 .withType(Type.valueOf(params[4].trim()))
@@ -17,7 +16,7 @@ public class Creator {
                 .build();
     }
 
-    private Date stringToDate (String date){
+    public static Date stringToDate (String date){
         SimpleDateFormat formatter =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         try {
             return formatter.parse(date);
