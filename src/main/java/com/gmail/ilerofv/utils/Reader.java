@@ -1,10 +1,11 @@
-package com.gmail.ilerofv.reader;
+package com.gmail.ilerofv.utils;
 
-import com.gmail.ilerofv.entity.Creator;
 import com.gmail.ilerofv.entity.Transaction;
 import com.gmail.ilerofv.entity.Type;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,13 +18,14 @@ import java.util.Map;
 
 
 public class Reader {
-
+    private static Logger logger = LogManager.getLogger(Reader.class);
     private List<Pair> deleted = new ArrayList<>();
 
-    private class Pair{
+    private class Pair {
         private Transaction deleted;
         private Transaction deleter;
-        Pair (Transaction deleted, Transaction deleter){
+
+        Pair(Transaction deleted, Transaction deleter) {
             this.deleted = deleted;
             this.deleter = deleter;
         }
@@ -36,9 +38,8 @@ public class Reader {
             File file = new File(filePath);
             fileReader = new FileReader(file);
         } catch (FileNotFoundException e) {
-            //TODO обработать
-            e.printStackTrace();
-            return null;
+            logger.error(e.toString(), e);
+            throw new RuntimeException(e);
         }
         try (CSVReader reader = new CSVReader(fileReader)) {
             //Read CSV line by line and use the string array as you want
@@ -54,8 +55,8 @@ public class Reader {
                 }
             }
         } catch (IOException | CsvValidationException e) {
-            //TODO нормальная ошибка
-            e.printStackTrace();
+            logger.error(e.toString(), e);
+            throw new RuntimeException(e);
         }
         return new ArrayList<>(relevant.values());
     }

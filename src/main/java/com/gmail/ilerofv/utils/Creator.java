@@ -1,10 +1,16 @@
-package com.gmail.ilerofv.entity;
+package com.gmail.ilerofv.utils;
+
+import com.gmail.ilerofv.entity.Transaction;
+import com.gmail.ilerofv.entity.Type;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Creator {
+    private static Logger logger = LogManager.getLogger(Creator.class);
     public static Transaction createTransaction(String[] params){
         return new Transaction.Builder()
                 .withId(params[0].trim())
@@ -21,9 +27,8 @@ public class Creator {
         try {
             return formatter.parse(date);
         } catch (ParseException e) {
-            //TODO обработать
-            e.printStackTrace();
-            return null;
+            logger.error(e.toString(), e);
+            throw new RuntimeException(e);
         }
     }
 

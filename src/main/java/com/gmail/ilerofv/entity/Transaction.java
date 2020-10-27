@@ -5,11 +5,11 @@ import java.util.Date;
 public class Transaction {
 
     private String id;
-    private Date date; //(format "DD/MM/YYYY hh:mm:ss")
-    private double amount; //(dollars and cents)
+    private Date date;
+    private double amount;
     private String merchant;
-    private Type type; //PAYMENT or REVERSAL
-    private String related = ""; //In the case a REVERSAL transaction, this field will contain the ID of the transaction it is reversing.
+    private Type type;
+    private String related = "";
 
     public String getId() {
         return id;
