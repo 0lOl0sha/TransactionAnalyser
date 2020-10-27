@@ -1,4 +1,4 @@
-package ilerofv.entity;
+package com.gmail.ilerofv.entity;
 
 import java.util.Date;
 
