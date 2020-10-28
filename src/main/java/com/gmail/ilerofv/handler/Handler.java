@@ -20,7 +20,11 @@ public class Handler {
         double sum = filtered.stream()
                 .mapToDouble(Transaction::getAmount)
                 .sum();
-        return new Report(count, sum/count);
+        double average;
+        if (sum > 0){
+            average = sum/count;
+        } else { average = 0;}
+        return new Report(count, average);
     }
 
 }
