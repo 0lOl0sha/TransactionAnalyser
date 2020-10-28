@@ -13,3 +13,5 @@ buildNumber.properties
 # IDE Files #
 */.idea/*
 *.iml
+*/test/*	
+logs/*

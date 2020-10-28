@@ -3,7 +3,6 @@ package com.gmail.ilerofv.entity;
 import java.util.Date;
 
 public class Transaction {
-
     private String id;
     private Date date;
     private double amount;
@@ -33,6 +32,9 @@ public class Transaction {
 
     public String getRelated() {
         return related;
+    }
+
+    private Transaction() {
     }
 
     @Override
@@ -86,6 +88,5 @@ public class Transaction {
             return newTransaction;
         }
     }
-
 
 }

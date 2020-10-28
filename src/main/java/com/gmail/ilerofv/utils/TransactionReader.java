@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Reader {
-    private static Logger logger = LogManager.getLogger(Reader.class);
+public class TransactionReader {
+    private static final Logger logger = LogManager.getLogger(TransactionReader.class);
     private List<Pair> deleted = new ArrayList<>();
 
     private class Pair {
@@ -31,7 +31,7 @@ public class Reader {
         }
     }
 
-    public List<Transaction> read(String filePath) {
+    public List<Transaction> readCsv(String filePath) {
         Map<String, Transaction> relevant = new LinkedHashMap<>();
         FileReader fileReader = null;
         try {

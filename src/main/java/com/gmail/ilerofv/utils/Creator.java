@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Creator {
-    private static Logger logger = LogManager.getLogger(Creator.class);
+    private static final Logger logger = LogManager.getLogger(Creator.class);
     public static Transaction createTransaction(String[] params){
         return new Transaction.Builder()
                 .withId(params[0].trim())
