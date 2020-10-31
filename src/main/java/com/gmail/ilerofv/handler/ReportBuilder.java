@@ -3,6 +3,7 @@ package com.gmail.ilerofv.handler;
 import com.gmail.ilerofv.entity.Report;
 import com.gmail.ilerofv.entity.Transaction;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,13 +18,12 @@ public class ReportBuilder {
                 .filter(item -> item.getDate().compareTo(to) < 0)
                 .collect(Collectors.toList());
         int count = filtered.size();
-        double sum = filtered.stream()
-                .mapToDouble(Transaction::getAmount)
-                .sum();
-        double average;
-        if (sum > 0){
-            average = sum/count;
-        } else { average = 0;}
+        BigDecimal sum = filtered.stream()
+                .map(Transaction::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal average;
+        if (sum.compareTo(BigDecimal.ZERO) > 0){
+            average = sum.divide(BigDecimal.valueOf(count));
+        } else { average = BigDecimal.ZERO;}
         return new Report(count, average);
     }
 

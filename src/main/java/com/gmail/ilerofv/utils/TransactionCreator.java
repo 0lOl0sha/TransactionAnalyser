@@ -5,6 +5,7 @@ import com.gmail.ilerofv.entity.TransactionType;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +17,7 @@ public class TransactionCreator {
         return  Transaction.builder()
                 .id(params[0].trim())
                 .date(stringToDate(params[1].trim()))
-                .amount(Double.parseDouble(params[2].trim()))
+                .amount(new BigDecimal(params[2].trim()))
                 .merchant(params[3].trim())
                 .transactionType(TransactionType.valueOf(params[4].trim()))
                 .related(params[5].trim())

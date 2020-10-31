@@ -19,8 +19,9 @@ public class ReportWriter {
     public static void writeReport (String reportFileName, Report report){
         List<String> result = new ArrayList<>();
 
-        String pattern = "#.##";
-        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        DecimalFormat myFormatter = new DecimalFormat();
+        myFormatter.setMaximumFractionDigits(2);
+        myFormatter.setMinimumFractionDigits(2);
         DecimalFormatSymbols sb = myFormatter.getDecimalFormatSymbols();
         sb.setDecimalSeparator('.');
         myFormatter.setDecimalFormatSymbols(sb);
