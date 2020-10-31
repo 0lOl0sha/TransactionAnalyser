@@ -1,9 +1,9 @@
 package com.gmail.ilerofv;
 
 import com.gmail.ilerofv.entity.Report;
-import com.gmail.ilerofv.utils.Creator;
+import com.gmail.ilerofv.utils.TransactionCreator;
 import com.gmail.ilerofv.entity.Transaction;
-import com.gmail.ilerofv.handler.Handler;
+import com.gmail.ilerofv.handler.ReportBuilder;
 import com.gmail.ilerofv.utils.InputReader;
 import com.gmail.ilerofv.utils.ReportWriter;
 import com.gmail.ilerofv.utils.TransactionReader;
@@ -25,10 +25,10 @@ public class Mainer {
         Properties input = InputReader.loadInputInfo();
         TransactionReader transactionReader = new TransactionReader();
         List<Transaction> transactions = transactionReader.readCsv("data/"+input.getProperty("fileName"));
-        Date from = Creator.stringToDate(input.getProperty("fromDate"));
-        Date to = Creator.stringToDate(input.getProperty("toDate"));
+        Date from = TransactionCreator.stringToDate(input.getProperty("fromDate"));
+        Date to = TransactionCreator.stringToDate(input.getProperty("toDate"));
         String merchant = input.getProperty("merchant");
-        Report report = Handler.report(transactions, from, to, merchant);
+        Report report = ReportBuilder.report(transactions, from, to, merchant);
         logger.info(report.toString());
         ReportWriter.writeReport(input.getProperty("reportFileName"), report);
     }

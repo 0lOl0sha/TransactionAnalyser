@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class Handler {
+public class ReportBuilder {
 
     public static Report report(List<Transaction> transactions, Date from, Date to, String merchant) {
         List<Transaction> filtered = transactions.stream()

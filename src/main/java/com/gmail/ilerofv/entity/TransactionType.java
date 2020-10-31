@@ -1,5 +1,5 @@
 package com.gmail.ilerofv.entity;
 
-public enum Type {
+public enum TransactionType {
     PAYMENT, REVERSAL
 }
